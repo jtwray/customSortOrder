@@ -1,13 +1,18 @@
 import { useState } from "react";
 
-export function EditForm({ onEdit, itemToEdit, setItemToEdit }) {
-  const [updatedItem, setUpdatedItem] = useState(itemToEdit);
+const initialUserForm = { email: "", username: "", name: "" };
+export function EditForm({ onEdit, onAdd, itemToEdit, setItemToEdit }) {
+  const [updatedItem, setUpdatedItem] = useState(itemToEdit ?? initialUserForm);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // onEdit({ ...updatedItem, text: updatedItem.text });
-    onEdit(updatedItem);
-    setUpdatedItem(null);
+    if (itemToEdit) {
+      onEdit(updatedItem);
+    } else {
+      onAdd({ ...updatedItem, id: Date.now() });
+    }
+    setUpdatedItem(initialUserForm);
     setItemToEdit(null);
   };
 
@@ -15,12 +20,12 @@ export function EditForm({ onEdit, itemToEdit, setItemToEdit }) {
     setUpdatedItem({ ...updatedItem, [e.target.name]: e.target.value });
   };
 
-  if (!updatedItem) return null;
+  // if (!updatedItem) return null;
   return (
     <fieldset style={styles.fieldset}>
       <legend style={styles.legend}>
         {/* <h2>Add Item To List</h2> */}
-        Edit List Item
+        {itemToEdit ? "Edit" : "Add"} List Item
       </legend>
       <form style={styles.form} onSubmit={handleSubmit}>
         <section style={styles.formSection}>
@@ -65,7 +70,7 @@ export function EditForm({ onEdit, itemToEdit, setItemToEdit }) {
           {/* </section> */}
 
           <button style={styles.button} type="submit">
-            Edit Item
+            {itemToEdit ? "Edit" : "Add"} Item
           </button>
         </section>
       </form>

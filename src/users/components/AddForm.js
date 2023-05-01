@@ -1,13 +1,19 @@
 import { useState } from "react";
 
-export function AddForm({ onAdd, itemToEdit, setItemToEdit }) {
-  const initialUser_addForm = { email: "", username: "", name: "" };
-  const [newItem, setNewItem] = useState(initialUser_addForm);
+const initialUserForm = { email: "", username: "", name: "" };
+export function AddForm({ onAdd, onEdit, itemToEdit, setItemToEdit }) {
+  console.log(itemToEdit);
+
+  const [newItem, setNewItem] = useState(itemToEdit ?? initialUserForm);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAdd({ ...newItem, id: Date.now() });
-    setNewItem(initialUser_addForm);
+    if (itemToEdit) {
+      onEdit(newItem);
+    } else {
+      onAdd({ ...newItem, id: Date.now() });
+    }
+    setNewItem(initialUserForm);
     setItemToEdit(null);
   };
 
@@ -15,12 +21,12 @@ export function AddForm({ onAdd, itemToEdit, setItemToEdit }) {
     setNewItem({ ...newItem, [e.target.name]: e.target.value });
   };
 
-  if (itemToEdit) return null;
+  // if (itemToEdit) return null;
   return (
     <fieldset style={styles.fieldset}>
       <legend style={styles.legend}>
         {/* <h2>Add Item To List</h2> */}
-        Add List Item
+        {itemToEdit ? "Edit" : "Add"} List Item
       </legend>
       <form style={styles.form} onSubmit={handleSubmit}>
         <fieldset style={styles.fieldsetForm}>
@@ -57,7 +63,7 @@ export function AddForm({ onAdd, itemToEdit, setItemToEdit }) {
         </fieldset>
         <fieldset style={styles.fieldsetBtn}>
           <button style={styles.button} type="submit">
-            Add Item
+            {itemToEdit ? "Edit" : "Add"} Item
           </button>
         </fieldset>
       </form>
