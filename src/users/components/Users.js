@@ -16,8 +16,8 @@ export function Users() {
       users: [],
     };
   });
-  const [selectedItem, setSelectedItem] = useState(() => {
-    console.log("useState--SelectedItem.setSelectedItem");
+  const [itemToEdit, setItemToEdit] = useState(() => {
+    console.log("useState--itemToEdit.setItemToEdit");
     return null;
   });
   const [sortBy, setSortBy] = useState(() => {
@@ -85,22 +85,22 @@ export function Users() {
         <legend style={styles.legend}>Users</legend>
         <UsersTable
           users={sortedUsers.users}
-          setSelectedItem={setSelectedItem}
-          selectedItem={selectedItem}
+          setItemToEdit={setItemToEdit}
+          itemToEdit={itemToEdit}
         />
 
         <div style={{ margin: "15px  0" }}>
           <AddForm
             onAdd={handleAddItem}
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
+            itemToEdit={itemToEdit}
+            setItemToEdit={setItemToEdit}
           />
         </div>
         <EditForm
-          key={selectedItem?.id}
+          key={itemToEdit?.id}
           onEdit={handleEditItem}
-          selectedItem={selectedItem}
-          setSelectedItem={setSelectedItem}
+          itemToEdit={itemToEdit}
+          setItemToEdit={setItemToEdit}
         />
       </fieldset>
     </div>
