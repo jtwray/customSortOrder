@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import React,{ useState, useMemo, useEffect } from "react";
 import { UsersTable } from "./UsersTable";
 import { AddForm } from "./AddForm";
 import { EditForm } from "./EditForm";
@@ -7,12 +7,14 @@ import { sortUsers } from "../utils/sortUsers";
 // import { mockUsersList } from "../utils/mockUsersList";
 import { mockUsersList } from "../utils/mockUsersList.js";
 import { mockShippingHistoryList_1000 } from "../utils/mockShippingHistoryList_1000.js";
+
+
 export function Users() {
   const [listItems, setListItems] = useState(() => {
     console.log("useState--listItems.setListItems");
     return {
       timestamp: Date.now(),
-      users: []
+      users: [],
     };
   });
   const [selectedItem, setSelectedItem] = useState(() => {
@@ -29,7 +31,7 @@ export function Users() {
     { direction: "descending", key: "email", type: "string" },
     { direction: "ascending", key: "name", type: "string" },
     { direction: "ascending", key: "purchaseprice", type: "number" },
-    { direction: "ascending", key: "dateofbirth", type: "date" }
+    { direction: "ascending", key: "dateofbirth", type: "date" },
   ]);
 
   useEffect(() => {
@@ -75,33 +77,15 @@ export function Users() {
     // functions and objects will be created new on every render
     // use a primitiive  such as an object key that is a string or number
 
-    listItems.timestamp
+    listItems.timestamp,
   ]);
 
   return (
-    <div
-      style={{
-        // alignItems: "center",
-        display: "flex",
-        // flexDirection: "row",
-        width: "880px",
-        margin: "0 auto",
-        fontFamily: "sans-serif",
-        gap: 45,
-        padding: 15
-      }}
-    >
-      <fieldset
-        style={{
-          background: "#f0f0f0",
-          border: "solid 1px #d1d1d1",
-          borderRadius: "10px",
-          color: "#373737"
-        }}
-      >
+    <div style={styles.usersContainer}>
+      <fieldset style={styles.fieldset}>
         <legend
           style={{
-            fontSize: 32
+            fontSize: 32,
           }}
         >
           Users
@@ -129,3 +113,21 @@ export function Users() {
     </div>
   );
 }
+const styles = {
+  usersContainer: {
+    // alignItems: "center",
+    display: "flex",
+    // flexDirection: "row",
+    width: "880px",
+    margin: "0 auto",
+    fontFamily: "sans-serif",
+    gap: 45,
+    padding: 15,
+  },
+  fieldset: {
+    background: "#f0f0f0",
+    border: "solid 1px #d1d1d1",
+    borderRadius: "10px",
+    color: "#373737",
+  },
+};

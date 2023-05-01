@@ -21,63 +21,32 @@ export function UsersTable({ setSelectedItem, users }) {
   }
 
   return (
-    <table
-      style={{
-        background: "#f0f0f0",
-        border: "solid 1px #d1d1d1",
-        borderRadius: "10px",
-        color: "#373737"
-      }}
-    >
+    <table style={styles.table}>
       <thead>
         <tr>
-          <th
-            style={{
-              textAlign: "start",
-              padding: 15,
-              textTransform: "uppercase"
-            }}
-            scope="row"
-          >
+          <th style={styles.th} scope="row">
             Email
           </th>
-          <th
-            style={{
-              textAlign: "start",
-              padding: 15,
-              textTransform: "uppercase"
-            }}
-            scope="row"
-          >
+          <th style={styles.th} scope="row">
             Name
           </th>
-          <th
-            style={{
-              textAlign: "start",
-              padding: 15,
-              textTransform: "uppercase"
-            }}
-            scope="row"
-          >
+          <th style={styles.th} scope="row">
             Username
           </th>
         </tr>
       </thead>
-      <tbody style={{ color: "#1e1e1e", background: "#fafafa" }}>
+      <tbody style={styles.tbody}>
         {/* {!!sortedUsersList?.length &&
           sortedUsersList?.map((item) => ( */}
         {!!users?.length &&
           users?.map((item, idx) => (
             // <tr key={item.id} onClick={() => handleSelectItem(item)}>
-            <tr
-              key={item.id}
-              style={{ background: `${!!(idx % 2) ? "#fafafa" : "#ffffff"}` }}
-            >
+            <tr key={item.id} style={styles.tr(idx)}>
               {/* <tr key={item.id}> */}
-              <td style={{ padding: "15px" }}>{item.email}</td>
-              <td style={{ padding: "15px" }}>{item.name}</td>
-              <td style={{ padding: "15px" }}>{item.username}</td>
-              <td style={{ padding: "15px" }}>
+              <td style={styles.td}>{item.email}</td>
+              <td style={styles.td}>{item.name}</td>
+              <td style={styles.td}>{item.username}</td>
+              <td style={styles.td}>
                 <button
                   onClick={handleSelectItem}
                   data-item={JSON.stringify(item)}
@@ -93,3 +62,19 @@ export function UsersTable({ setSelectedItem, users }) {
     </table>
   );
 }
+const styles = {
+  table: {
+    background: "#f0f0f0",
+    border: "solid 1px #d1d1d1",
+    borderRadius: "10px",
+    color: "#373737",
+  },
+  th: {
+    textAlign: "start",
+    padding: 15,
+    textTransform: "uppercase",
+  },
+  tbody: { color: "#1e1e1e", background: "#fafafa" },
+  tr: (idx) => ({ background: `${!!(idx % 2) ? "#fafafa" : "#ffffff"}` }),
+  td: { padding: "15px" },
+};

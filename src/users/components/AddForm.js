@@ -17,39 +17,16 @@ export function AddForm({ onAdd, selectedItem, setSelectedItem }) {
 
   if (selectedItem) return null;
   return (
-    <fieldset
-      style={{
-        background: "#f0f0f0",
-        border: "solid 1px #d1d1d1",
-        borderRadius: "10px",
-        color: "#373737"
-      }}
-    >
-      <legend style={{ fontSize: 24 }}>
+    <fieldset style={styles.fieldset}>
+      <legend style={styles.legend}>
         {/* <h2>Add Item To List</h2> */}
         Add List Item
       </legend>
-      <form style={{ display: "flex" }} onSubmit={handleSubmit}>
-        <fieldset
-          style={{
-            display: "inline-flex",
-            // display: "inlineflex",
-            width: "100%",
-            padding: 15,
-            flexDirection: "column",
-            gap: "15px"
-            // height: 300,
-            // justifyContent: "center"
-          }}
-        >
+      <form style={styles.form} onSubmit={handleSubmit}>
+        <fieldset style={styles.fieldsetForm}>
           <label htmlFor="email">email:</label>
           <input
-            style={{
-              background: "#fafafa",
-              borderRadius: 3,
-              // marginTop: -12,
-              height: 45
-            }}
+            style={styles.input}
             required
             name="email"
             type="email"
@@ -59,12 +36,7 @@ export function AddForm({ onAdd, selectedItem, setSelectedItem }) {
           />
           <label htmlFor="username">username:</label>
           <input
-            style={{
-              background: "#fafafa",
-              borderRadius: 3,
-              // marginTop: -12,
-              height: 45
-            }}
+            style={styles.input}
             required
             name="username"
             // type="username"
@@ -74,12 +46,7 @@ export function AddForm({ onAdd, selectedItem, setSelectedItem }) {
           />
           <label htmlFor="name">name:</label>
           <input
-            style={{
-              background: "#fafafa",
-              borderRadius: 3,
-              // marginTop: -12,
-              height: 45
-            }}
+            style={styles.input}
             required
             name="name"
             // type="name"
@@ -88,29 +55,8 @@ export function AddForm({ onAdd, selectedItem, setSelectedItem }) {
             onChange={handleChangeItem}
           />
         </fieldset>
-        <fieldset
-          style={{
-            display: "inline-flex",
-            // display: "inlineflex",
-            padding: "15px",
-            paddingTop: "45px",
-            // display:'block',
-            flexDirection: "column",
-            justifyContent: "center",
-            // gap: "15px",
-            width: "100%"
-            // height: 300
-          }}
-        >
-          <button
-            style={{
-              background: "#fafafa",
-              borderRadius: 3,
-              // marginTop: -12,
-              height: 45
-            }}
-            type="submit"
-          >
+        <fieldset style={styles.fieldsetBtn}>
+          <button style={styles.button} type="submit">
             Add Item
           </button>
         </fieldset>
@@ -118,3 +64,47 @@ export function AddForm({ onAdd, selectedItem, setSelectedItem }) {
     </fieldset>
   );
 }
+const styles = {
+  fieldset: {
+    background: "#f0f0f0",
+    border: "solid 1px #d1d1d1",
+    borderRadius: "10px",
+    color: "#373737",
+  },
+  button: {
+    background: "#fafafa",
+    borderRadius: 3,
+    // marginTop: -12,
+    height: 45,
+  },
+  fieldsetBtn: {
+    display: "inline-flex",
+    // display: "inlineflex",
+    padding: "15px",
+    paddingTop: "45px",
+    // display:'block',
+    flexDirection: "column",
+    justifyContent: "center",
+    // gap: "15px",
+    width: "100%",
+    // height: 300
+  },
+  input: {
+    background: "#fafafa",
+    borderRadius: 3,
+    // marginTop: -12,
+    height: 45,
+  },
+  fieldsetForm: {
+    display: "inline-flex",
+    // display: "inlineflex",
+    width: "100%",
+    padding: 15,
+    flexDirection: "column",
+    gap: "15px",
+    // height: 300,
+    // justifyContent: "center"
+  },
+  form: { display: "flex" },
+  legend: { fontSize: 24 },
+};
