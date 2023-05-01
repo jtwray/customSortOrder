@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function AddForm({ onAdd, selectedItem, setSelectedItem }) {
+export function AddForm({ onAdd, itemToEdit, setItemToEdit }) {
   const initialUser_addForm = { email: "", username: "", name: "" };
   const [newItem, setNewItem] = useState(initialUser_addForm);
 
@@ -8,14 +8,14 @@ export function AddForm({ onAdd, selectedItem, setSelectedItem }) {
     e.preventDefault();
     onAdd({ ...newItem, id: Date.now() });
     setNewItem(initialUser_addForm);
-    setSelectedItem(null);
+    setItemToEdit(null);
   };
 
   const handleChangeItem = (e) => {
     setNewItem({ ...newItem, [e.target.name]: e.target.value });
   };
 
-  if (selectedItem) return null;
+  if (itemToEdit) return null;
   return (
     <fieldset style={styles.fieldset}>
       <legend style={styles.legend}>

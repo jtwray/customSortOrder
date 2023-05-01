@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { sortUsers } from "../utils/sortUsers";
 
-export function UsersTable({ setSelectedItem, users }) {
+export function UsersTable({ setItemToEdit, users }) {
   //   const sortedUsers = sortUsers(users);
 
   //   const sortedUsersList = useMemo(() => {
@@ -17,7 +17,7 @@ export function UsersTable({ setSelectedItem, users }) {
   //   });
   function handleSelectItem(e) {
     const clickedItem = JSON.parse(e.currentTarget.dataset.item);
-    setSelectedItem(clickedItem);
+    setItemToEdit(clickedItem);
   }
 
   return (

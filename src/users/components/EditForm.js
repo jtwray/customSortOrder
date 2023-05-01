@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-export function EditForm({ onEdit, selectedItem, setSelectedItem }) {
-  const [updatedItem, setUpdatedItem] = useState(selectedItem);
+export function EditForm({ onEdit, itemToEdit, setItemToEdit }) {
+  const [updatedItem, setUpdatedItem] = useState(itemToEdit);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // onEdit({ ...updatedItem, text: updatedItem.text });
     onEdit(updatedItem);
     setUpdatedItem(null);
-    setSelectedItem(null);
+    setItemToEdit(null);
   };
 
   const handleChangeItem = (e) => {
