@@ -77,7 +77,7 @@ const styles = {
     background: "#f0f0f0",
     border: "solid 1px #d1d1d1",
     borderRadius: "10px",
-    color: "#373737"
+    color: "#373737",
   },
   legend: {
     fontSize: 24,
@@ -86,7 +86,7 @@ const styles = {
     background: "#f0f0f0",
     borderTop: "solid 1px #d1d1d1",
     borderRadius: "10px",
-    color: "#373737"
+    color: "#373737",
   },
   form: { display: "flex" },
   formSection: {
@@ -95,7 +95,7 @@ const styles = {
     width: "100%",
     padding: 15,
     flexDirection: "column",
-    gap: "15px"
+    gap: "15px",
     // height: 300,
     // justifyContent: "center"
   },
@@ -105,7 +105,7 @@ const styles = {
     width: "100%",
     padding: 15,
     // marginTop: -12,
-    height: 45
+    height: 45,
   },
   input: {
     width: "-webkit-fill-available",
@@ -113,7 +113,7 @@ const styles = {
     background: "#fafafa",
     borderRadius: 3,
     // marginTop: -12,
-    height: 45
+    height: 45,
   },
-  inputLabel: { width: "100%" }
+  inputLabel: { width: "100%" },
 };

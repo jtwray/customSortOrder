@@ -1,4 +1,4 @@
-import React,{ useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { UsersTable } from "./UsersTable";
 import { AddForm } from "./AddForm";
 import { EditForm } from "./EditForm";
@@ -7,7 +7,6 @@ import { sortUsers } from "../utils/sortUsers";
 // import { mockUsersList } from "../utils/mockUsersList";
 import { mockUsersList } from "../utils/mockUsersList.js";
 import { mockShippingHistoryList_1000 } from "../utils/mockShippingHistoryList_1000.js";
-
 
 export function Users() {
   const [listItems, setListItems] = useState(() => {
@@ -83,13 +82,7 @@ export function Users() {
   return (
     <div style={styles.usersContainer}>
       <fieldset style={styles.fieldset}>
-        <legend
-          style={{
-            fontSize: 32,
-          }}
-        >
-          Users
-        </legend>
+        <legend style={styles.legend}>Users</legend>
         <UsersTable
           users={sortedUsers.users}
           setSelectedItem={setSelectedItem}
@@ -129,5 +122,8 @@ const styles = {
     border: "solid 1px #d1d1d1",
     borderRadius: "10px",
     color: "#373737",
+  },
+  legend: {
+    fontSize: 32,
   },
 };
