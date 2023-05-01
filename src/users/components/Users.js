@@ -91,7 +91,9 @@ export function Users() {
 
         <div style={{ margin: "15px  0" }}>
           <AddForm
+            key={itemToEdit?.id ?? "addform"}
             onAdd={handleAddItem}
+            onEdit={handleEditItem}
             itemToEdit={itemToEdit}
             setItemToEdit={setItemToEdit}
           />
